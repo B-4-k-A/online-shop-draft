@@ -1,11 +1,6 @@
 package ru.quipy.shop.order.controller
 
 import org.springframework.web.bind.annotation.*
-import ru.quipy.bankDemo.accounts.api.AccountAggregate
-import ru.quipy.bankDemo.accounts.api.AccountCreatedEvent
-import ru.quipy.bankDemo.accounts.api.BankAccountCreatedEvent
-import ru.quipy.bankDemo.accounts.logic.Account
-import ru.quipy.bankDemo.accounts.logic.BankAccount
 import ru.quipy.core.EventSourcingService
 import ru.quipy.shop.order.Order
 import ru.quipy.shop.order.OrderAggregate
@@ -15,7 +10,7 @@ import ru.quipy.shop.order.events.OrderCreatedEvent
 import ru.quipy.shop.order.events.OrderProductAddedEvent
 import ru.quipy.shop.order.events.OrderProductRemovedEvent
 import ru.quipy.shop.product.Product
-import ru.quipy.shop.product.ProductAggregate
+import ru.quipy.shop.product.config.ProductAggregate
 import java.util.*
 
 @RestController

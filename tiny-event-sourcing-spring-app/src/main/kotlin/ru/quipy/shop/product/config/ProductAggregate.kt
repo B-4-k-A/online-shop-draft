@@ -1,4 +1,4 @@
-package ru.quipy.shop.product;
+package ru.quipy.shop.product.config;
 
 import ru.quipy.core.annotations.AggregateType;
 import ru.quipy.domain.Aggregate;
