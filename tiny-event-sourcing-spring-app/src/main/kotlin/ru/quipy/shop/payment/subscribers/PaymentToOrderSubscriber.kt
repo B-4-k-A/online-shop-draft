@@ -10,7 +10,7 @@ import ru.quipy.shop.order.OrderAggregate
 import ru.quipy.shop.order.entities.OrderStatus
 import ru.quipy.shop.order.events.OrderChangeStatusEvent
 import ru.quipy.shop.payment.Payment
-import ru.quipy.shop.payment.PaymentAggregate
+import ru.quipy.shop.payment.config.PaymentAggregate
 import ru.quipy.streams.AggregateSubscriptionsManager
 import java.util.UUID
 import javax.annotation.PostConstruct

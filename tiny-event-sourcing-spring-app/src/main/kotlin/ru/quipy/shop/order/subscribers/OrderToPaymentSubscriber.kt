@@ -10,7 +10,7 @@ import ru.quipy.shop.order.Order
 import ru.quipy.shop.order.OrderAggregate
 import ru.quipy.shop.order.entities.OrderStatus
 import ru.quipy.shop.payment.Payment
-import ru.quipy.shop.payment.PaymentAggregate
+import ru.quipy.shop.payment.config.PaymentAggregate
 import ru.quipy.shop.payment.entities.PaymentStatus
 import ru.quipy.shop.payment.events.PaymentChangeStatusEvent
 import ru.quipy.shop.payment.events.PaymentCreateEvent

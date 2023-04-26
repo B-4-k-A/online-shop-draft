@@ -1,4 +1,4 @@
-package ru.quipy.shop.payment;
+package ru.quipy.shop.payment.config;
 
 import ru.quipy.core.annotations.AggregateType;
 import ru.quipy.domain.Aggregate;

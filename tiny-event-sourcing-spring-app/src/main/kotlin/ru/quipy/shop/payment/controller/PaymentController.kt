@@ -3,9 +3,8 @@ package ru.quipy.shop.payment.controller
 import org.springframework.web.bind.annotation.*
 import ru.quipy.core.EventSourcingService
 import ru.quipy.shop.payment.Payment
-import ru.quipy.shop.payment.PaymentAggregate
+import ru.quipy.shop.payment.config.PaymentAggregate
 import ru.quipy.shop.payment.entities.PaymentStatus
-import ru.quipy.shop.payment.events.PaymentCreateEvent
 import java.util.*
 
 
@@ -29,11 +28,9 @@ class PaymentController(
     fun getPayment(@PathVariable paymentId: UUID) =
         paymentESService.getState(paymentId)
 
-    @PutMapping("/{paymentId}/status")
+    @PostMapping("/{paymentId}/status")
     fun changeStatus(@PathVariable paymentId: UUID, @RequestParam status: PaymentStatus) =
         paymentESService.update(paymentId) { it.changeStatus(status)}
 
-    @PutMapping("/{paymentId}")
-    fun setPaymentDate(@PathVariable paymentId: UUID, @RequestParam date: Date) =
-        paymentESService.update(paymentId) { it.setPaymentDate(date)}
+
 }

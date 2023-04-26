@@ -6,12 +6,12 @@ import ru.quipy.domain.Event
 import ru.quipy.shop.product.config.ProductAggregate
 import java.util.UUID
 
-@DomainEvent(name = "PRODUCT_CHANGE_PRICE_EVENT")
+@DomainEvent(name = "PRODUCT_BUYOUT_EVENT")
 class ProductBuyoutEvent(
     @Getter
     val productId: UUID,
     @Getter
     val entities: Long
 ) : Event<ProductAggregate>(
-    name = "PRODUCT_CHANGE_PRICE_EVENT"
+    name = "PRODUCT_BUYOUT_EVENT"
 )
