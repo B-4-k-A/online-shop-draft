@@ -7,7 +7,8 @@ import ru.quipy.core.annotations.StateTransitionFunc
 import ru.quipy.domain.AggregateState
 import ru.quipy.shop.product.config.ProductAggregate
 import ru.quipy.shop.product.events.ProductAddEntitesEvent
-import ru.quipy.shop.product.events.ProductChangePrice
+import ru.quipy.shop.product.events.ProductBuyoutEvent
+import ru.quipy.shop.product.events.ProductChangePriceEvent
 import ru.quipy.shop.product.events.ProductCreateEvent
 
 import java.util.UUID
@@ -30,7 +31,7 @@ class Product : AggregateState<UUID, ProductAggregate> {
     }
 
     @StateTransitionFunc
-    fun changePrice(event: ProductChangePrice) {
+    fun changePrice(event: ProductChangePriceEvent) {
         price = event.price
     }
 
@@ -39,14 +40,24 @@ class Product : AggregateState<UUID, ProductAggregate> {
         count += event.count
     }
 
-    fun changePrice(price: Long): ProductChangePrice =
-        ProductChangePrice(id, price)
+    @StateTransitionFunc
+    fun buyout(event: ProductBuyoutEvent) {
+        if (event.entities > count) {
+            throw IllegalStateException("not enough product entities available in stock !")
+        }
+    }
+
+    fun changePrice(price: Long): ProductChangePriceEvent =
+        ProductChangePriceEvent(id, price)
 
     fun createProduct(id: UUID, name: String, price: Long): ProductCreateEvent =
         ProductCreateEvent(id, name, price)
 
     fun addProductEntites(count: Long): ProductAddEntitesEvent =
         ProductAddEntitesEvent(id, count)
+
+    fun buyoutEntities(count: Long): ProductBuyoutEvent =
+        ProductBuyoutEvent(id, count)
 
     override fun getId(): UUID? = id
 }
