@@ -44,6 +44,8 @@ class Product : AggregateState<UUID, ProductAggregate> {
     fun buyout(event: ProductBuyoutEvent) {
         if (event.entities > count) {
             throw IllegalStateException("not enough product entities available in stock !")
+        } else {
+            count -= event.entities
         }
     }
 
